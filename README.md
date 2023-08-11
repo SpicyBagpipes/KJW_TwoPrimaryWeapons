@@ -1,6 +1,8 @@
 # KJW_TwoPrimaryWeapons
 A modification for Arma 3 that adds the ability to carry two primary weapons.
 
+Steam Workshop: https://steamcommunity.com/sharedfiles/filedetails/?id=2893363164
+
 ## Features
 - Configurable Position
   - Change where your second primary weapon appears.
