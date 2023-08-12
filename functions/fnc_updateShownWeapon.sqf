@@ -35,7 +35,7 @@ private _objects = [];
 {
 	deleteVehicle _x;
 } forEach _currentWeaponObjects;
-if (_weaponInfo isEqualTo [] || {(!(GVAR(showHolstered)))}) exitWith {};
+if (_weaponInfo isEqualTo [] || {_currentPositionSelection isEqualTo []}) exitWith {};
 {
 	private _holder = createVehicle ["GroundWeaponHolder",[0,0,0]];
 	_holder addWeaponWithAttachmentsCargoGlobal [_weaponInfo, 1];
