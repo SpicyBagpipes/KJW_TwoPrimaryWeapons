@@ -58,14 +58,7 @@ private _componentBeautified = QUOTE(COMPONENT_BEAUTIFIED);
 	_componentBeautified, //Category
 	str _arr, //Setting properties. Varies based on type
 	1, //1: all clients share the same setting, 2: setting can’t be overwritten
-	{ //Code to execute upon setting change
-		private _newBlacklistArray = parseSimpleArray _this;
-		private _blacklistMap = createHashMap;
-		_newBlacklistArray apply {
-			_blacklistMap set [toLowerANSI _x,true];
-		};
-		EGVAR(blacklistedClasses,map) = _blacklistMap;
-	},
+	{}, //Code to execute upon setting change
 	false //Requires restart?
 ] call CBA_fnc_addSetting;
 
@@ -79,14 +72,7 @@ private _componentBeautified = QUOTE(COMPONENT_BEAUTIFIED);
 	_componentBeautified, //Category
 	str _arr, //Setting properties. Varies based on type
 	1, //1: all clients share the same setting, 2: setting can’t be overwritten
-	{ //Code to execute upon setting change
-		private _newWhitelistArray = parseSimpleArray _this;
-		private _whitelistMap = createHashMap;
-		_newWhitelistArray apply {
-			_whitelistMap set [toLowerANSI _x,true];
-		};
-		EGVAR(whitelistedClasses,map) = _whitelistMap;
-	},
+	{}, //Code to execute upon setting change
 	false //Requires restart?
 ] call CBA_fnc_addSetting;
 

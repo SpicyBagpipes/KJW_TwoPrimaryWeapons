@@ -12,7 +12,7 @@
 #define QGVAR(P1) QUOTE(GVAR(P1))
 #define QQVAR(P1) QQUOTE(GVAR(P1))
 
-#define EGVAR(P1,P2) P1##_##P2
+#define EGVAR(P1,P2) COMPONENT##_##P1##_##P2
 #define QEGVAR(P1,P2) QUOTE(EGVAR(P1))
 #define QQEGVAR(P1,P2) QQUOTE(EGVAR(P1))
 
