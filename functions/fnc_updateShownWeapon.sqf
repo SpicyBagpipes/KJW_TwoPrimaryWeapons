@@ -24,7 +24,11 @@ private _weaponInfo = if (_secondPrimaryEquipped) then {
 } else {
 	player getVariable [QGVAR(secondPrimaryInfo),[]];
 };
-private _currentPositionSelection = GVAR(selectedPosition);
+private _currentPositionSelection = if (_secondPrimaryEquipped) then {
+	GVAR(selectedPositionPrimary);	
+} else {
+	GVAR(selectedPositionSecondary);
+};
 private _positions = [_currentPositionSelection];
 private _objects = [];
 
