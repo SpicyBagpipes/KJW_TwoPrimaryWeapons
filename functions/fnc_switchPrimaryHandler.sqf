@@ -16,7 +16,6 @@
  *  Public: Yes
  */
 
-// "arifle_MX_SW_pointer_F"
 params ["_delay"];
 
 private _weapon = primaryWeapon player;
