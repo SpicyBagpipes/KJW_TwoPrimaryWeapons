@@ -23,9 +23,11 @@
 		private _secondPrimaryEquipped = player getVariable [QGVAR(secondPrimaryEquipped),false];
 		private _weapon = primaryWeapon player;
 		if (_secondPrimaryEquipped) then {
+			//If player has second primary weapon equipped, update second primary weapon info variable.
 			private _secondPrimaryInfo = ((weaponsItems player) select {_x#0 isEqualTo _weapon})#0;
 			player setVariable [QGVAR(secondPrimaryInfo),_secondPrimaryInfo];
 		} else {
+			//If player has primary primary weapon equipped, update primary primary weapon info variable.
 			private _primaryPrimaryInfo = ((weaponsItems player) select {_x#0 isEqualTo _weapon})#0;
 			player setVariable [QGVAR(primaryPrimaryInfo),_primaryPrimaryInfo];
 		};
@@ -47,7 +49,11 @@ player addEventHandler ["Killed", {
 ["CBA_loadoutSet", {
 	params ["_unit", "_loadout", "_extradata"];
 	private _secondPrimaryInfo = _extradata getOrDefault [QGVAR(secondPrimaryInfo),[]];
+	private _primaryPrimaryInfo = _extradata getOrDefault [QGVAR(primaryPrimaryInfo),[]];
+	private _secondPrimaryEquipped = _extradata getOrDefault [QGVAR(secondPrimaryEquipped),false];
 	_unit setVariable [QGVAR(secondPrimaryInfo), _secondPrimaryInfo];
+	_unit setVariable [QGVAR(primaryPrimaryInfo), _primaryPrimaryInfo];
+	_unit setVariable [QGVAR(secondPrimaryEquipped), _secondPrimaryEquipped];
 	call FUNC(updateShownWeapon);
 }] call CBA_fnc_addEventHandler;
 
@@ -55,12 +61,10 @@ player addEventHandler ["Killed", {
 	params ["_unit", "_loadout", "_extradata"];
 	private _primaryPrimaryInfo = _unit getVariable [QGVAR(primaryPrimaryInfo), []];
 	private _secondPrimaryInfo = _unit getVariable [QGVAR(secondPrimaryInfo), []];
-	if (primaryWeapon _unit isEqualTo _primaryPrimaryInfo#0) then {
-		_extradata set [QGVAR(secondPrimaryInfo), _secondPrimaryInfo];
-	} else {
-		_extradata set [QGVAR(secondPrimaryInfo), _primaryPrimaryInfo];
-	};
-	private _oldInfo = _extradata getOrDefault ["KJW_ShotgunClass",true];
-	if (_oldInfo) exitWith {};
-	_extradata deleteAt "KJW_ShotgunClass";
+	private _secondPrimaryEquipped = player getVariable [QGVAR(secondPrimaryEquipped),false];
+	_extradata set [QGVAR(primaryPrimaryInfo), _primaryPrimaryInfo];
+	_extradata set [QGVAR(secondPrimaryInfo), _secondPrimaryInfo];
+	_extradata set [QGVAR(secondPrimaryEquipped), _secondPrimaryEquipped];
+	private _oldInfo = _extradata getOrDefault ["KJW_ShotgunClass",""];
+	if (_oldInfo isNotEqualTo "") then {_extradata deleteAt "KJW_ShotgunClass"};
 }] call CBA_fnc_addEventHandler;

@@ -42,18 +42,18 @@ class Extended_PreInit_EventHandlers {
 };
 
 /*
-    Backend:
-    press 4
-    stow rifle animation plays
-    current rifle data is saved
-    data is attachto'd on selected position on ur vest
-    data from your second primary is set to ur current weapon
-    press 4
-    stow rifle animation plays
-    rifle data loaded back to ur primary
+    Creating GWH for 3den:
+    private _obj = create3DENEntity ["Object", "GroundWeaponHolder", [0,0,0]];
+    _obj addWeaponWithAttachmentsCargo [["arifle_MX_F", "", "", "", [], [], ""], 1]
 
+    Finding positions:
+    _obj1 = bob;
+    _logic = "Logic" createVehicleLocal [0,0,0];
+    _logic attachTo [player, [0,0,0], "pelvis", true];
 
-
+    private _orient = [_obj1, _logic] call BIS_fnc_vectorDirAndUpRelative; 
+    private _relPos = _logic worldToModelVisual ASLtoAGL getPosWorld _obj1;
+    [_orient, _relpos]
 */
 
 
