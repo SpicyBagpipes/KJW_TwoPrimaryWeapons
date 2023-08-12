@@ -58,7 +58,35 @@ private _componentBeautified = QUOTE(COMPONENT_BEAUTIFIED);
 	_componentBeautified, //Category
 	str _arr, //Setting properties. Varies based on type
 	1, //1: all clients share the same setting, 2: setting can’t be overwritten
-	{}, //Code to execute upon setting change
+	{ //Code to execute upon setting change
+		private _newBlacklistArray = parseSimpleArray _this;
+		private _blacklistMap = createHashMap;
+		_newBlacklistArray apply {
+			_blacklistMap set [toLowerANSI _x,true];
+		};
+		EGVAR(blacklistedClasses,map) = _blacklistMap;
+	},
+	false //Requires restart?
+] call CBA_fnc_addSetting;
+
+[
+	QGVAR(whitelistedClasses), //Setting classname
+	"EDITBOX", //Setting type. Can be CHECKBOX, LIST, SLIDER, COLOR, EDITBOX, TIME
+	[
+		"Whitelisted Classes", //Display name
+		"Primaries will be able to be equipped as second primaries if they are in this array. Array of string classnames. If empty, all weapons not blacklisted will be allowed" //Tooltip
+	],
+	_componentBeautified, //Category
+	str _arr, //Setting properties. Varies based on type
+	1, //1: all clients share the same setting, 2: setting can’t be overwritten
+	{ //Code to execute upon setting change
+		private _newWhitelistArray = parseSimpleArray _this;
+		private _whitelistMap = createHashMap;
+		_newWhitelistArray apply {
+			_whitelistMap set [toLowerANSI _x,true];
+		};
+		EGVAR(whitelistedClasses,map) = _whitelistMap;
+	},
 	false //Requires restart?
 ] call CBA_fnc_addSetting;
 
