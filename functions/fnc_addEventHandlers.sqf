@@ -68,3 +68,16 @@ player addEventHandler ["Killed", {
 	private _oldInfo = _extradata getOrDefault ["KJW_ShotgunClass",""];
 	if (_oldInfo isNotEqualTo "") then {_extradata deleteAt "KJW_ShotgunClass"};
 }] call CBA_fnc_addEventHandler;
+
+player addEventHandler ["GetInMan", {
+	params ["_unit", "_role", "_vehicle", "_turret"];
+	private _currentWeaponObjects = player getVariable [QGVAR(currentWeaponObjects),[]];
+	{
+		deleteVehicle _x;
+	} forEach _currentWeaponObjects;
+}];
+
+player addEventHandler ["GetOutMan", {
+	params ["_unit", "_role", "_vehicle", "_turret"];
+	call FUNC(updateShownWeapon);
+}];
