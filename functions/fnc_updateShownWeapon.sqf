@@ -37,7 +37,7 @@ private _objects = [];
 } forEach _currentWeaponObjects;
 if (_weaponInfo isEqualTo [] || {_currentPositionSelection isEqualTo []}) exitWith {};
 {
-	private _holder = createVehicle ["GroundWeaponHolder",[0,0,0]];
+	private _holder = createVehicle [QGVAR(GWH),[0,0,0]];
 	_holder addWeaponWithAttachmentsCargoGlobal [_weaponInfo, 1];
 	_holder setDamage 1;
 	_holder attachTo [player, _x#2, _x#0, true];
