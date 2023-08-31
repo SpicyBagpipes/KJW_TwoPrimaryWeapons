@@ -53,8 +53,33 @@ private _positions = [
 		[-0.163846,-0.163029,-0.1981146] //Position relative to player
 	],
 	[
+		"spine3",
+		[
+			[0.901187,0.00443262,0.433132], //VectorDir
+			[0.0447066,-0.99544,-0.0828307] //VectorUp
+		],
+		[-0.0853765,-0.324295,0.106977] //Position relative to player
+	],
+	[
+		"spine3",
+		[
+			[0.748651,-0.66266,-0.012813], //VectorDir
+			[-0.662772,-0.748614,-0.00845503] //VectorUp
+		],
+		[-0.228363,-0.109022,0.167251] //Position relative to player
+	],
+	[
 		[]
 	]
+];
+private _displayNames = [
+	"Back",
+	"Slung to side",
+	"Slung to front",
+	"Breacher",
+	"Backpack",
+	"Back 2",
+	"Disabled"
 ];
 
 [
@@ -109,7 +134,7 @@ private _positions = [
 	_componentBeautified, //Category
 	[
 		_positions, //Values
-		["Back","Slung to side","Slung to front","Breacher", "Disabled"], //Displaynames.
+		_displayNames, //Displaynames.
 		0
 	], //Setting properties. Varies based on type
 	0, //1: all clients share the same setting, 2: setting can’t be overwritten
@@ -127,7 +152,7 @@ private _positions = [
 	_componentBeautified, //Category
 	[
 		_positions, //Values
-		["Back","Slung to side","Slung to front","Breacher", "Disabled"], //Displaynames.
+		_displayNames, //Displaynames.
 		0
 	], //Setting properties. Varies based on type
 	0, //1: all clients share the same setting, 2: setting can’t be overwritten

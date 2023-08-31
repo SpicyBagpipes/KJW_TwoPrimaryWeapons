@@ -43,7 +43,7 @@ class Extended_PreInit_EventHandlers {
 
 /*
     Creating GWH for 3den:
-    private _obj = create3DENEntity ["Object", "GroundWeaponHolder", [0,0,0]];
+    private _obj = create3DENEntity ["Object", "KJW_TwoPrimaryWeapons_GWH", [0,0,0]];
     _obj addWeaponWithAttachmentsCargo [["arifle_MX_F", "", "", "", [], [], ""], 1]
 
     Finding positions:
