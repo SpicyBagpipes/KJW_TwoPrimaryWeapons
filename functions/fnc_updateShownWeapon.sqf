@@ -35,6 +35,7 @@ private _objects = [];
 {
 	deleteVehicle _x;
 } forEach _currentWeaponObjects;
+
 if (_weaponInfo isEqualTo [] || {_currentPositionSelection isEqualTo []}) exitWith {};
 {
 	private _holder = createVehicle [QGVAR(GWH),[0,0,0]];

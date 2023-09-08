@@ -36,6 +36,7 @@
 
 player addEventHandler ["Killed", {
 	params ["_unit", "_killer", "_instigator", "_useEffects"];
+	if (_unit isNotEqualTo player) exitWith {};
 	private _secondPrimaryEquipped = player getVariable [QGVAR(secondPrimaryEquipped),false];
 	private _weaponInfo = if (_secondPrimaryEquipped) then {
 		player getVariable [QGVAR(primaryPrimaryInfo),[]];
