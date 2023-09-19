@@ -91,3 +91,13 @@ player addEventHandler ["GetOutMan", {
 	params ["_unit", "_role", "_vehicle", "_turret"];
 	call FUNC(updateShownWeapon);
 }];
+
+if (isServer) then {
+	addMissionEventHandler ["HandleDisconnect", {
+		params ["_unit", "_id", "_uid", "_name"];
+		private _weaps = _unit getVariable [QGVAR(currentWeaponObjects), []];
+		{
+			deleteVehicle _x;
+		} forEach _weaps;
+	}];
+};

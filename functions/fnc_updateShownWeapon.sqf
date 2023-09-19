@@ -45,7 +45,7 @@ if (_weaponInfo isEqualTo [] || {_currentPositionSelection isEqualTo []}) exitWi
 	_holder setVectorDirAndUp _x#1;
 	_objects pushBack _holder;
 } forEach _positions;
-player setVariable [QGVAR(currentWeaponObjects),_objects];
+player setVariable [QGVAR(currentWeaponObjects), _objects, true];
 
 /*
 	Positions array:
