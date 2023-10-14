@@ -72,7 +72,7 @@ player addEventHandler ["Killed", {
 	params ["_unit", "_loadout", "_extradata"];
 	private _primaryPrimaryInfo = _unit getVariable [QGVAR(primaryPrimaryInfo), []];
 	private _secondPrimaryInfo = _unit getVariable [QGVAR(secondPrimaryInfo), []];
-	private _secondPrimaryEquipped = player getVariable [QGVAR(secondPrimaryEquipped),false];
+	private _secondPrimaryEquipped = _unit getVariable [QGVAR(secondPrimaryEquipped),false];
 	_extradata set [QGVAR(primaryPrimaryInfo), _primaryPrimaryInfo];
 	_extradata set [QGVAR(secondPrimaryInfo), _secondPrimaryInfo];
 	_extradata set [QGVAR(secondPrimaryEquipped), _secondPrimaryEquipped];

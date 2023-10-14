@@ -26,7 +26,7 @@ private _positions = [
 			[-0.942853,0.330874,0.0362221], //VectorDir
 			[-0.33272,-0.939935,-0.0747082] //VectorUp
 		],
-		[-0.085057,-0.196157,0.106247] //Position relative to player
+		[-0.145057,-0.196157,0.06247] //Position relative to player
 	],
 	[
 		"pelvis", //Mempoint
@@ -66,7 +66,7 @@ private _positions = [
 			[0.748651,-0.66266,-0.012813], //VectorDir
 			[-0.662772,-0.748614,-0.00845503] //VectorUp
 		],
-		[-0.228363,-0.109022,0.167251] //Position relative to player
+		[-0.228363,-0.109022,0.067251] //Position relative to player
 	],
 	[
 		[]
