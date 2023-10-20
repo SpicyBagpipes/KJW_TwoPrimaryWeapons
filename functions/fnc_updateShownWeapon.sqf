@@ -29,6 +29,9 @@ private _currentPositionSelection = if (_secondPrimaryEquipped) then {
 } else {
 	GVAR(selectedPositionSecondary);
 };
+
+if (_currentPositionSelection isEqualTo []) exitWith {};
+
 private _positions = [_currentPositionSelection];
 private _objects = [];
 
@@ -36,7 +39,7 @@ private _objects = [];
 	deleteVehicle _x;
 } forEach _currentWeaponObjects;
 
-if (_weaponInfo isEqualTo [] || {_currentPositionSelection isEqualTo []}) exitWith {};
+if (_weaponInfo isEqualTo []) exitWith {};
 {
 	private _holder = createVehicle [QGVAR(GWH),[0,0,0]];
 	_holder addWeaponWithAttachmentsCargoGlobal [_weaponInfo, 1];
