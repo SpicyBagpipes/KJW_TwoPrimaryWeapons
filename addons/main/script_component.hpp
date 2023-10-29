@@ -1,5 +1,5 @@
 #define COMPONENT main
-#define COMPONENT_BEAUTIFIED Main
+#define COMPONENT_BEAUTIFIED KJW's Two Primary Weapons
 #include "script_mod.hpp"
 
 #ifdef DEBUG_ENABLED_MAIN
