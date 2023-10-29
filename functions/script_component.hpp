@@ -1,1 +1,0 @@
-#include "..\macro_general.hpp"
