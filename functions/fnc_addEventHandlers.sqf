@@ -59,9 +59,9 @@ player addEventHandler ["Killed", {
 
 ["CBA_loadoutSet", {
 	params ["_unit", "_loadout", "_extradata"];
-	private _secondPrimaryInfo = + _extradata getOrDefault [QGVAR(secondPrimaryInfo),[]];
-	private _primaryPrimaryInfo = + _extradata getOrDefault [QGVAR(primaryPrimaryInfo),[]];
-	private _secondPrimaryEquipped = + _extradata getOrDefault [QGVAR(secondPrimaryEquipped),false];
+	private _secondPrimaryInfo = _extradata getOrDefault [QGVAR(secondPrimaryInfo),[]];
+	private _primaryPrimaryInfo = _extradata getOrDefault [QGVAR(primaryPrimaryInfo),[]];
+	private _secondPrimaryEquipped = _extradata getOrDefault [QGVAR(secondPrimaryEquipped),false];
 	_unit setVariable [QGVAR(secondPrimaryInfo), _secondPrimaryInfo];
 	_unit setVariable [QGVAR(primaryPrimaryInfo), _primaryPrimaryInfo];
 	_unit setVariable [QGVAR(secondPrimaryEquipped), _secondPrimaryEquipped];
