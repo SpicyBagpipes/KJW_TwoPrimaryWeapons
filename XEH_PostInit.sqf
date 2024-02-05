@@ -1,18 +1,18 @@
 #include "macro_general.hpp"
 /*
  *  Author: KJW
- * 
+ *
  *  Handles relevant code to be run post init.
- * 
+ *
  *  Arguments:
  *	None
- * 
+ *
  *  Return Value:
  *  None
- * 
+ *
  *  Example:
  *  call KJW_TwoPrimaryWeapons_XEH_PostInit
- * 
+ *
  *  Public: No
  */
 
@@ -26,3 +26,5 @@ call FUNC(addSettings);
 	["statement", "Statement", {true}, ""],
 	["button", "Switch", {true}, "", {}, {[0] call FUNC(switchPrimaryHandler); [true] call ace_arsenal_fnc_refresh}]
 ]] call ace_arsenal_fnc_addAction;
+
+GVAR(addACEweight) = isClass (configFile >> "CfgPatches" >> "ace_movement");
