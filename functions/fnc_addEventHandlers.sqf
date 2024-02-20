@@ -58,6 +58,7 @@ player addEventHandler ["Killed", {
 }];
 
 ["CBA_loadoutSet", {
+	if (is3DEN) exitWith {};
 	params ["_unit", "_loadout", "_extradata"];
 	private _secondPrimaryInfo = _extradata getOrDefault [QGVAR(secondPrimaryInfo),[]];
 	private _primaryPrimaryInfo = _extradata getOrDefault [QGVAR(primaryPrimaryInfo),[]];
@@ -69,6 +70,7 @@ player addEventHandler ["Killed", {
 }] call CBA_fnc_addEventHandler;
 
 ["CBA_loadoutGet", {
+	if (is3DEN) exitWith {};
 	params ["_unit", "_loadout", "_extradata"];
 	private _primaryPrimaryInfo =+ (_unit getVariable [QGVAR(primaryPrimaryInfo), []]);
 	private _secondPrimaryInfo =+ (_unit getVariable [QGVAR(secondPrimaryInfo), []]);
@@ -102,3 +104,22 @@ if (isServer) then {
 		} forEach _weaps;
 	}];
 };
+
+["ace_arsenal_loadoutVerified", {
+    params ["", "_extendedInfo"];
+    private _kjwVarToCheck = [QGVAR(secondPrimaryInfo), QGVAR(primaryPrimaryInfo)] select (_extendedInfo getOrDefault [QGVAR(secondPrimaryEquipped), false]);
+    private _weaponData = _extendedInfo getOrDefault [_kjwVarToCheck, []];
+    if (_weaponData isNotEqualTo []) then {
+        if !((_weaponData select 0) call ace_arsenal_fnc_baseWeapon in ace_arsenal_virtualItemsFlat) then {
+            _extendedInfo deleteAt _kjwVarToCheck;
+        } else {
+            {
+                private _class = _x param [0, ""];
+                private _defaultValue = ["", []] select (_x isEqualType []);
+                if (_class != "" && {!(_class in ace_arsenal_virtualItemsFlat)}) then {
+                    _weaponData set [_forEachIndex + 1, _defaultValue];
+                };
+            } forEach (_weaponData select [1]);
+        };
+    };
+}] call CBA_fnc_addEventHandler;
