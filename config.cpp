@@ -25,6 +25,7 @@ class CfgFunctions {
             FUNCTION_DECLARE(addEventHandlers)
             FUNCTION_DECLARE(switchPrimaryHandler)
             FUNCTION_DECLARE(updateShownWeapon)
+            FUNCTION_DECLARE(addSecondWeapon)
         };
     };
 };
@@ -88,11 +89,42 @@ class CfgMovesBasic {
     };
 };
 
+class CfgMovesMaleSdr {
+    class States {
+        class TransAnimBase;
+        class AmovPknlMstpSrasWpstDnon_AmovPknlMstpSnonWnonDnon;
+        class AmovPercMstpSnonWnonDnon;
+        class AmovPknlMstpSnonWnonDnon;
+
+        class AmovPknlMstpSrasWrflDnon_AmovPknlMstpSnonWnonDnon: AmovPknlMstpSnonWnonDnon {
+            idle = "";
+            mask = "weaponSwitching";
+        };
+
+        class AmovPercMstpSrasWrflDnon_AmovPercMstpSnonWnonDnon: AmovPercMstpSnonWnonDnon {
+            idle = "";
+            mask = "weaponSwitching";
+        };
+
+        class AmovPknlMstpSnonWnonDnon_AmovPknlMstpSrasWrflDnon: TransAnimBase
+        {
+            idle = "";
+            mask = "weaponSwitching";
+        };
+        class AmovPknlMstpSnonWnonDnon_AmovPknlMstpSrasWpstDnon: AmovPknlMstpSrasWpstDnon_AmovPknlMstpSnonWnonDnon
+        {
+            idle = "";
+            mask = "weaponSwitching";
+        };
+    };
+};
+
 class CfgVehicles
 {
 	class CargoNet_01_box_F;
 	class GVAR(GWH): CargoNet_01_box_F
 	{
+        scope = 1;
 		model="\A3\Weapons_f\DummyWeapon_Single.p3d";
 		showWeaponCargo=1;
 	};
