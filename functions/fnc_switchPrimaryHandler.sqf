@@ -58,7 +58,9 @@ if (_secondPrimaryEquipped) then {
 						player addPrimaryWeaponItem _x#0;
 						player setAmmo [primaryWeapon player, _x#1];
 					} else {
-						[player, _x#0,_x#1, true] call CBA_fnc_addMagazine;
+						player addPrimaryWeaponItem _x#0;
+						player setAmmo [primaryWeapon player, _x#1];
+						[player, _autoLoadedMagazine,_autoLoadedMagazineCount, true] call CBA_fnc_addMagazine;
 					};
 				} else {
 					player addPrimaryWeaponItem _x;
@@ -100,7 +102,9 @@ if (_secondPrimaryEquipped) then {
 						player addPrimaryWeaponItem _x#0;
 						player setAmmo [primaryWeapon player, _x#1];
 					} else {
-						[player, _x#0,_x#1, true] call CBA_fnc_addMagazine;
+						player addPrimaryWeaponItem _x#0;
+						player setAmmo [primaryWeapon player, _x#1];
+						[player, _autoLoadedMagazine,_autoLoadedMagazineCount, true] call CBA_fnc_addMagazine;
 					};
 				} else {
 					player addPrimaryWeaponItem _x;

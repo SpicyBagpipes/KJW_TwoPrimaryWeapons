@@ -49,6 +49,10 @@ player addEventHandler ["Killed", {
 	private _objects = player getVariable [QGVAR(currentWeaponObjects),[]];
 	if (_objects isEqualTo []) exitWith {}; // No other guns.
 	{
+		if (GVAR(addACEweight)) then {
+			private _weaponMass = _x getVariable [QGVAR(mass), 0];
+			[player, player, -_weaponMass] call ace_movement_fnc_addLoadToUnitContainer;
+		};
 		deleteVehicle _x;
 	} forEach _objects;
 	player setVariable [QGVAR(currentWeaponObjects),[]];
@@ -86,6 +90,10 @@ player addEventHandler ["GetInMan", {
 	params ["_unit", "_role", "_vehicle", "_turret"];
 	private _currentWeaponObjects = player getVariable [QGVAR(currentWeaponObjects),[]];
 	{
+		if (GVAR(addACEweight)) then {
+			private _weaponMass = _x getVariable [QGVAR(mass), 0];
+			[player, player, -_weaponMass] call ace_movement_fnc_addLoadToUnitContainer;
+		};
 		deleteVehicle _x;
 	} forEach _currentWeaponObjects;
 }];
