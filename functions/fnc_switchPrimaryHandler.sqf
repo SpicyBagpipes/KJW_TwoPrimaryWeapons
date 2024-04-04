@@ -39,7 +39,7 @@ if ((!_systemEnabled) || (!_weaponIsValid)) exitWith {};
 private _secondPrimaryEquipped = player getVariable [QGVAR(secondPrimaryEquipped),false];
 if (_secondPrimaryEquipped) then {
 	//De-equip second primary.
-	private _secondPrimaryInfo = ((weaponsItems player) select {_x#0 isEqualTo _weapon})#0;
+	private _secondPrimaryInfo = (getUnitLoadout player) select 0;
 	player action ["SwitchWeapon", player, player, 299]; //Put weapon away action.
 	player setVariable [QGVAR(secondPrimaryInfo), _secondPrimaryInfo];
 	[
@@ -47,21 +47,15 @@ if (_secondPrimaryEquipped) then {
 			params ["_weapon"];
 			private _primaryPrimaryInfo =+ (player getVariable [QGVAR(primaryPrimaryInfo),[]]);
 			player removeWeaponGlobal _weapon;
-			player addWeaponGlobal _primaryPrimaryInfo#0;
+			//player addWeaponGlobal _primaryPrimaryInfo#0;
+			[player, _primaryPrimaryInfo#0] call CBA_fnc_addWeaponWithoutItems;
 			_primaryPrimaryInfo deleteAt 0;
-			private _autoLoadedMagazine = primaryWeaponMagazine player;
-			private _autoLoadedMagazineCount = player ammo primaryWeapon player;
 			{
 				if (_x isEqualTo []) then {continue};
 				if (typeName _x isEqualTo "ARRAY") then {
-					if (_autoLoadedMagazine isEqualTo []) then {
-						player addPrimaryWeaponItem _x#0;
-						player setAmmo [primaryWeapon player, _x#1];
-					} else {
-						player addPrimaryWeaponItem _x#0;
-						player setAmmo [primaryWeapon player, _x#1];
-						[player, _autoLoadedMagazine,_autoLoadedMagazineCount, true] call CBA_fnc_addMagazine;
-					};
+					player addWeaponItem [primaryWeapon player,[_x#0,_x#1],true];
+					//player addPrimaryWeaponItem _x#0;
+					//player setAmmo [primaryWeapon player, _x#1];
 				} else {
 					player addPrimaryWeaponItem _x;
 				};
@@ -82,7 +76,7 @@ if (_secondPrimaryEquipped) then {
 } else {
 	//Equip second primary.
 	private _weapon = primaryWeapon player;
-	private _primaryPrimaryInfo = ((weaponsItems player) select {_x#0 isEqualTo _weapon})#0;
+	private _primaryPrimaryInfo = (getUnitLoadout player) select 0;
 	private _shouldBeshown = getNumber (configFile >> "CfgWeapons" >> _weapon >> "WeaponSlotsInfo" >> "holsterScale") isNotEqualTo 0;
 	player action ["SwitchWeapon", player, player, 299]; //Put weapon away action.
 	player setVariable [QGVAR(primaryPrimaryInfo), _primaryPrimaryInfo];
@@ -91,21 +85,15 @@ if (_secondPrimaryEquipped) then {
 			params["_weapon"];
 			private _secondPrimaryInfo =+ (player getVariable [QGVAR(secondPrimaryInfo),[]]);
 			player removeWeaponGlobal _weapon;
-			player addWeaponGlobal _secondPrimaryInfo#0;
+			//player addWeaponGlobal _secondPrimaryInfo#0;
+			[player, _secondPrimaryInfo#0] call CBA_fnc_addWeaponWithoutItems;
 			_secondPrimaryInfo deleteAt 0;
-			private _autoLoadedMagazine = primaryWeaponMagazine player;
-			private _autoLoadedMagazineCount = player ammo primaryWeapon player;
 			{
 				if (_x isEqualTo []) then {continue};
 				if (typeName _x isEqualTo "ARRAY") then {
-					if (_autoLoadedMagazine isEqualTo []) then {
-						player addPrimaryWeaponItem _x#0;
-						player setAmmo [primaryWeapon player, _x#1];
-					} else {
-						player addPrimaryWeaponItem _x#0;
-						player setAmmo [primaryWeapon player, _x#1];
-						[player, _autoLoadedMagazine,_autoLoadedMagazineCount, true] call CBA_fnc_addMagazine;
-					};
+					player addWeaponItem [primaryWeapon player,[_x#0,_x#1],true];
+					//player addPrimaryWeaponItem _x#0;
+					//player setAmmo [primaryWeapon player, _x#1];
 				} else {
 					player addPrimaryWeaponItem _x;
 				};
