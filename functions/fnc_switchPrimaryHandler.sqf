@@ -41,7 +41,7 @@ if (_secondPrimaryEquipped) then {
 	//De-equip second primary.
 	private _secondPrimaryInfo = (getUnitLoadout player) select 0;
 	player action ["SwitchWeapon", player, player, 299]; //Put weapon away action.
-	player setVariable [QGVAR(secondPrimaryInfo), _secondPrimaryInfo];
+	player setVariable [QGVAR(secondPrimaryInfo), _secondPrimaryInfo,true];
 	[
 		{
 			params ["_weapon"];
@@ -79,7 +79,7 @@ if (_secondPrimaryEquipped) then {
 	private _primaryPrimaryInfo = (getUnitLoadout player) select 0;
 	private _shouldBeshown = getNumber (configFile >> "CfgWeapons" >> _weapon >> "WeaponSlotsInfo" >> "holsterScale") isNotEqualTo 0;
 	player action ["SwitchWeapon", player, player, 299]; //Put weapon away action.
-	player setVariable [QGVAR(primaryPrimaryInfo), _primaryPrimaryInfo];
+	player setVariable [QGVAR(primaryPrimaryInfo), _primaryPrimaryInfo,true];
 	[
 		{
 			params["_weapon"];

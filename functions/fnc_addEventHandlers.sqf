@@ -25,11 +25,11 @@
 		if (_secondPrimaryEquipped) then {
 			//If player has second primary weapon equipped, update second primary weapon info variable.
 			private _secondPrimaryInfo = ((weaponsItems player) select {_x#0 isEqualTo _weapon})#0;
-			player setVariable [QGVAR(secondPrimaryInfo),_secondPrimaryInfo];
+			player setVariable [QGVAR(secondPrimaryInfo),_secondPrimaryInfo,true];
 		} else {
 			//If player has primary primary weapon equipped, update primary primary weapon info variable.
 			private _primaryPrimaryInfo = ((weaponsItems player) select {_x#0 isEqualTo _weapon})#0;
-			player setVariable [QGVAR(primaryPrimaryInfo),_primaryPrimaryInfo];
+			player setVariable [QGVAR(primaryPrimaryInfo),_primaryPrimaryInfo,true];
 		};
 	}
 ] call CBA_fnc_addPlayerEventHandler;
@@ -43,8 +43,8 @@ player addEventHandler ["Killed", {
 	} else {
 		player getVariable [QGVAR(secondPrimaryInfo),[]];
 	};
-	player setVariable [QGVAR(secondPrimaryInfo),[]];
-	player setVariable [QGVAR(primaryPrimaryInfo),[]];
+	player setVariable [QGVAR(secondPrimaryInfo),[],true];
+	player setVariable [QGVAR(primaryPrimaryInfo),[],true];
 	player setVariable [QGVAR(secondPrimaryEquipped),false];
 	private _objects = player getVariable [QGVAR(currentWeaponObjects),[]];
 	if (_objects isEqualTo []) exitWith {}; // No other guns.
@@ -67,9 +67,9 @@ player addEventHandler ["Killed", {
 	private _secondPrimaryInfo = _extradata getOrDefault [QGVAR(secondPrimaryInfo),[]];
 	private _primaryPrimaryInfo = _extradata getOrDefault [QGVAR(primaryPrimaryInfo),[]];
 	private _secondPrimaryEquipped = _extradata getOrDefault [QGVAR(secondPrimaryEquipped),false];
-	_unit setVariable [QGVAR(secondPrimaryInfo), _secondPrimaryInfo];
-	_unit setVariable [QGVAR(primaryPrimaryInfo), _primaryPrimaryInfo];
-	_unit setVariable [QGVAR(secondPrimaryEquipped), _secondPrimaryEquipped];
+	_unit setVariable [QGVAR(secondPrimaryInfo), _secondPrimaryInfo,true];
+	_unit setVariable [QGVAR(primaryPrimaryInfo), _primaryPrimaryInfo,true];
+	_unit setVariable [QGVAR(secondPrimaryEquipped), _secondPrimaryEquipped,true];
 	call FUNC(updateShownWeapon);
 }] call CBA_fnc_addEventHandler;
 
