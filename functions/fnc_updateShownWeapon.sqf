@@ -30,9 +30,8 @@ private _currentPositionSelection = if (_secondPrimaryEquipped) then {
 	GVAR(selectedPositionSecondary);
 };
 
-if (_currentPositionSelection isEqualTo []) exitWith {};
+if (_currentPositionSelection isEqualTo [[]]) exitWith {};
 
-private _positions = [_currentPositionSelection];
 private _objects = [];
 
 {
@@ -56,7 +55,7 @@ if (count _weaponInfo isNotEqualTo 7) exitWith {diag_log "KJW's Two Weapons | Tr
 	_holder attachTo [player, _x#2, _x#0, true];
 	_holder setVectorDirAndUp _x#1;
 	_objects pushBack _holder;
-} forEach _positions;
+} forEach _currentPositionSelection;
 player setVariable [QGVAR(currentWeaponObjects), _objects, true];
 
 /*
