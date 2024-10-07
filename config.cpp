@@ -26,6 +26,7 @@ class CfgFunctions {
             FUNCTION_DECLARE(switchPrimaryHandler)
             FUNCTION_DECLARE(updateShownWeapon)
             FUNCTION_DECLARE(addSecondWeapon)
+            FUNCTION_DECLARE(validateWeapons)
         };
     };
 };
