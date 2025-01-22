@@ -2,7 +2,7 @@
 /*
  *  Author: Jenna
  *
- *  Updates shown weapon based on player's currently equipped primary.
+ *  Updates shown weapon based on unit's currently equipped primary.
  *
  *  Arguments:
  *  None
@@ -16,9 +16,10 @@
  *  Public: No
  */
 
+params ["_unit"];
 
-private _primaryPrimaryWeapon = (player getVariable [QGVAR(primaryPrimaryInfo),[""]])#0;
-private _secondPrimaryWeapon = (player getVariable [QGVAR(secondPrimaryInfo),[""]])#0;
+private _primaryPrimaryWeapon = (_unit getVariable [QGVAR(primaryPrimaryInfo),[""]])#0;
+private _secondPrimaryWeapon = (_unit getVariable [QGVAR(secondPrimaryInfo),[""]])#0;
 
 private _primaryIsValid = true;
 private _secondaryIsValid = true;
@@ -47,9 +48,9 @@ if ((_secondPrimaryWeapon isNotEqualTo "")) then {
 };
 
 if !_primaryIsValid then {
-	player setVariable [QGVAR(primaryPrimaryInfo),nil]
+	_unit setVariable [QGVAR(primaryPrimaryInfo),nil]
 };
 
 if !_secondaryIsValid then {
-	player setVariable [QGVAR(secondPrimaryInfo),nil]
+	_unit setVariable [QGVAR(secondPrimaryInfo),nil]
 };
