@@ -30,9 +30,8 @@ private _currentPositionSelection = if (_secondPrimaryEquipped) then {
 	GVAR(selectedPositionSecondary);
 };
 
-if (_currentPositionSelection isEqualTo []) exitWith {};
+if (_currentPositionSelection isEqualTo [[]]) exitWith {};
 
-private _positions = [_currentPositionSelection];
 private _objects = [];
 
 {
@@ -43,7 +42,7 @@ private _objects = [];
 	deleteVehicle _x;
 } forEach _currentWeaponObjects;
 
-if (count _weaponInfo isNotEqualTo 7) exitWith {diag_log "KJW's Two Weapons | Tried to update shown weapon but weapon data was incorrectly format."; diag_log "KJW's Two Weapons | " + str _weaponInfo};
+if (count _weaponInfo isNotEqualTo 7) exitWith {diag_log "KJW's Two Weapons | Tried to update shown weapon but weapon data was incorrectly formatted or weapons failed white/blacklist validation."; diag_log "KJW's Two Weapons | " + str _weaponInfo};
 {
 	private _holder = createVehicle [QGVAR(GWH),[0,0,0]];
 	_holder addWeaponWithAttachmentsCargoGlobal [_weaponInfo, 1];
@@ -56,7 +55,7 @@ if (count _weaponInfo isNotEqualTo 7) exitWith {diag_log "KJW's Two Weapons | Tr
 	_holder attachTo [player, _x#2, _x#0, true];
 	_holder setVectorDirAndUp _x#1;
 	_objects pushBack _holder;
-} forEach _positions;
+} forEach _currentPositionSelection;
 player setVariable [QGVAR(currentWeaponObjects), _objects, true];
 
 /*

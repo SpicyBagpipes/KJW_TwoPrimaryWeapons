@@ -2,7 +2,7 @@
 /*
  *  Author: Jenna
  *
- *  Updates shown weapon based on _unit's currently equipped primary.
+ *  Updates shown weapon based on unit's currently equipped primary.
  *
  *  Arguments:
  *  None
