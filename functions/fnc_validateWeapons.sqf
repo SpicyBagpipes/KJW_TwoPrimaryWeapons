@@ -16,8 +16,6 @@
  *  Public: No
  */
 
-#include "script_component.hpp"
-
 params ["_unit"];
 
 private _primaryPrimaryWeapon = (_unit getVariable [QGVAR(primaryPrimaryInfo),[""]]) select 0;
