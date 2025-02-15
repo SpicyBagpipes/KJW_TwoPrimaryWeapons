@@ -70,7 +70,7 @@ player addEventHandler ["Killed", {
 	_unit setVariable [QGVAR(secondPrimaryInfo), _secondPrimaryInfo,true];
 	_unit setVariable [QGVAR(primaryPrimaryInfo), _primaryPrimaryInfo,true];
 	_unit setVariable [QGVAR(secondPrimaryEquipped), _secondPrimaryEquipped,true];
-	call FUNC(validateWeapons);
+	[_unit] call FUNC(validateWeapons);
 	call FUNC(updateShownWeapon);
 }] call CBA_fnc_addEventHandler;
 

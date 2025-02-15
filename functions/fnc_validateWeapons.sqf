@@ -21,6 +21,7 @@ params ["_unit"];
 private _primaryPrimaryWeapon = (_unit getVariable [QGVAR(primaryPrimaryInfo),[]]) select 0;
 private _secondPrimaryWeapon = (_unit getVariable [QGVAR(secondPrimaryInfo),[]]) select 0;
 
+
 private _primaryIsValid = true;
 private _secondaryIsValid = true;
 if (!(isNil {_primaryPrimaryWeapon})) then {
