@@ -30,8 +30,6 @@ private _currentPositionSelection = if (_secondPrimaryEquipped) then {
 	GVAR(selectedPositionSecondary);
 };
 
-if ((_currentPositionSelection isEqualTo [[]]) || (count _weaponInfo isNotEqualTo 7)) exitWith {};
-
 private _objects = [];
 
 {
@@ -41,6 +39,8 @@ private _objects = [];
 	};
 	deleteVehicle _x;
 } forEach _currentWeaponObjects;
+
+if ((_currentPositionSelection isEqualTo [[[]]]) || (count _weaponInfo isNotEqualTo 7)) exitWith {};
 
 {
 	private _holder = createVehicle [QGVAR(GWH),[0,0,0]];
