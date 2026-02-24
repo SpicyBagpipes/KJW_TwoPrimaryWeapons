@@ -44,11 +44,11 @@ class Extended_PreInit_EventHandlers {
 };
 
 /*
-    Creating GWH for 3den:
+    //Creating GWH for 3den:
     private _obj = create3DENEntity ["Object", "KJW_TwoPrimaryWeapons_GWH", [0,0,0]];
-    _obj addWeaponWithAttachmentsCargo [["arifle_MX_F", "", "", "", [], [], ""], 1]
+    _obj addWeaponWithAttachmentsCargo [["arifle_MX_F", "", "", "", [], [], ""], 1];
 
-    Finding positions:
+    //Finding positions:
     _obj1 = bob;
     _bone = "leftupleg";
     _logic = "Logic" createVehicleLocal [0,0,0];
