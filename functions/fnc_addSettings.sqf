@@ -35,6 +35,20 @@ private _componentBeautified = QUOTE(COMPONENT_BEAUTIFIED);
 ] call CBA_fnc_addSetting;
 
 [
+	QGVAR(Launchers), //Setting classname
+	"CHECKBOX", //Setting type. Can be CHECKBOX, LIST, SLIDER, COLOR, EDITBOX, TIME
+	[
+		"Allow with launchers", //Display name
+		"Stops keybind from working. Does NOT remove currently equipped second primary." //Tooltip
+	],
+	_componentBeautified, //Category
+	true, //Setting properties. Varies based on type
+	1, //1: all clients share the same setting, 2: setting can’t be overwritten
+	{}, //Code to execute upon setting change
+	false //Requires restart?
+] call CBA_fnc_addSetting;
+
+[
 	QGVAR(blacklistedClasses), //Setting classname
 	"EDITBOX", //Setting type. Can be CHECKBOX, LIST, SLIDER, COLOR, EDITBOX, TIME
 	[

@@ -28,6 +28,7 @@
 	],
 	{
 		if (commandingMenu isNotEqualTo "") exitWith {};
+		if (!(GVAR(launchers)) && ((secondaryWeapon player) isNotEqualTo "")) exitWith {};
     	private _delay = if (currentWeapon player isEqualTo "") then {
 			0.1
 		} else {
